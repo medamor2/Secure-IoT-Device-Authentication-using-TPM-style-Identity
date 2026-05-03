@@ -14,24 +14,8 @@ Private keys are handled in TPM-style secure storage:
 
 ## Architecture Diagram
 
-```text
-+-------------------+                              +------------------------------+
-|   IoT Device      |                              | Authentication Server        |
-|-------------------|   POST /register             |------------------------------|
-| generate keypair  | ---------------------------> | store device public key      |
-| secure priv key   |                              | trusted registry (JSON)      |
-| sign challenges   |                              +------------------------------+
-|                   |
-|                   |   POST /challenge (device_id)
-|                   | <---------------------------  issue random nonce + TTL
-|                   |
-|                   |   POST /authenticate
-|                   |   (device_id, nonce,
-|                   |    signature, timestamp)
-|                   | --------------------------->  verify signature + nonce use
-|                   |                               + replay protection + logging
-+-------------------+                              +------------------------------+
-```
+<img width="1687" height="990" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/72e422ac-677f-472f-9b0d-6c68216f1272" />
+`
 
 ## Project Structure
 
